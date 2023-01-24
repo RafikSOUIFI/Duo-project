@@ -57,9 +57,9 @@ each(array,function(e,i){
 })
 return acc;
 }
-
+//-----------------------------------------------------------------------------------------------
 each(plants,function(e,i){
-    $("#plantsId").append('<div id="a'+i+'" class="plantDiv"><img class="IMG" id="'+i+'" src="'+e.source+'"/><h4>'+e.name+'</h4></div>')
+    $("#plantsId").append('<div id="a'+i+'" class="plantDiv"><img class="IMG" id="'+i+'" src="'+e.source+'"/><h4 id="b'+i+'">'+e.name+'</h4></div>')
 })
 
 //Hover over the About div
@@ -70,7 +70,7 @@ $("#About").hover(function(){
     function(){
         $('.AboutContact').empty();
         each(plants,function(e,i){
-            $("#plantsId").append('<div class="plantDiv"><img class="IMG" id="'+i+'" src="'+e.source+'"/><h4>'+e.name+'</h4></div>')
+            $("#plantsId").append('<div id="a'+i+'" class="plantDiv"><img class="IMG" id="'+i+'" src="'+e.source+'"/><h4>'+e.name+'</h4></div>')
         })
     });
 
@@ -82,7 +82,7 @@ $("#About").hover(function(){
         function(){
             $('.AboutContact').empty();
             each(plants,function(e,i){
-                $("#plantsId").append('<div class="plantDiv"><img class="IMG" id="'+i+'" src="'+e.source+'"/><h4>'+e.name+'</h4></div>')
+                $("#plantsId").append('<div id="a'+i+'" class="plantDiv"><img class="IMG" id="'+i+'" src="'+e.source+'"/><h4>'+e.name+'</h4></div>')
             })
         });
 
@@ -94,11 +94,10 @@ $("#btn").click(function(e){
     })
     $("#plantsId").empty()
     each(fd,function(e,i){
-        $("#plantsId").append('<div class="plantDiv"><img class="IMG" id="'+i+'" src="'+e.source+'"/><h4>'+e.name+'</h4></div>')
+        $("#plantsId").append('<div id="a'+i+'" class="plantDiv"><img class="IMG" id="'+i+'" src="'+e.source+'"/><h4>'+e.name+'</h4></div>')
         $("#plantsId").append('<div class="info"><h3>Some information about '+e.name+'</h3><p>'+e.info+'</p></div>')
         $(".plantDiv").css("height","70%")
         $(".plantDiv").css("width","70%")
-
     })
     $(".find").val('')
 })
@@ -106,12 +105,13 @@ $("#btn").click(function(e){
 $(".active").click(function(){
     $("#plantsId").empty()
     each(plants,function(e,i){
-        $("#plantsId").append('<div class="plantDiv"><img class="IMG" id="'+i+'" src="'+e.source+'"/><h4>'+e.name+'</h4></div>')
+        $("#plantsId").append('<div id="a'+i+'" class="plantDiv"><img class="IMG" id="'+i+'" src="'+e.source+'"/><h4>'+e.name+'</h4></div>')
     })
 })
+var id;
 $('.allPlantsDiv').on("click",function(e){
     console.log(e.target.id);
-    var id =e.target.id
+     id =e.target.id
     var temp=`${"#"+id}`
     var temp2=`${"#a"+id}`
     console.log($(temp));
@@ -126,7 +126,34 @@ $('.allPlantsDiv').on("click",function(e){
         $($(e.target).children()[0]).show()
         }
 })
+//-------------------------------------------------------------------
+// Keep the sarch bar on top of the page
 
+$(document).scroll(function() {
+    if ($(document).scrollTop() > 100) {
+        $(".search").addClass("move").css({'position': 'fixed', 'top': '0', 'left': '0', 'width': '100%'});
+    } else {
+        $(".search").removeClass("move");
+    }
+});
+
+
+
+
+$("#MoreInf").click(function(e){
+    var index= id
+    var fd=[]
+    fd.push(plants[index])
+    $("#plantsId").empty()
+    each(fd,function(e,i){
+        $("#plantsId").append('<div id="a'+i+'" class="plantDiv"><img class="IMG" id="'+i+'" src="'+e.source+'"/><h4>'+e.name+'</h4></div>')
+        $("#plantsId").append('<div class="info"><h3>Some information about '+e.name+'</h3><p>'+e.info+'</p></div>')
+        $(".plantDiv").css("height","70%")
+        $(".plantDiv").css("width","70%")
+
+    })
+    $(".find").val('')
+})
 
 
 
@@ -141,9 +168,14 @@ $('.allPlantsDiv').on("click",function(e){
 /*$(document).on("click",function(e){
     console.log(e.target.id)
  })*/
-
- 
- $("#Buy").click(function(){
-    alert('Item added to cart!')
-})
+ //---------
+/*
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+        $(".search").addClass("move").css({'position': 'fixed', 'top': '0', 'left': '0', 'width': '100%'});
+    } else {
+        $(".search").removeClass("move");
+    }
+});
+*/
  
