@@ -5,24 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project</title>
+    <title>The Garden Store</title>
     <link rel="stylesheet" href="Project.css">
     <script src="jQuery.js"></script>
+    
 </head>
 
 <body>
+    <video autoplay muted loop id="myVideo">
+        <source src="Flowers Opening Timelapse II 4K.mp4" type="video/mp4">
+    </video>
     <!-- the search bar div -->
     <div class="search">
         <a class="active" href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a id="About" href="#about">About</a>
+        <a id="Contact" href="#contact">Contact</a>
         <div class="search-Div">
-            <input type="text" placeholder="What are you looking for ?" name="search">
+            <input class="find" type="text" placeholder="What are you looking for ?" name="search">
             <button id="btn" type="submit" class="bt">Find</button>
         </div>
       </div>
     <!-- the search bar div -->
+    <div class="allPlantsDiv" id="plantsId">
+      
 
+    </div>
     <script src="Project.js"></script>
 </body>
 
